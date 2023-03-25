@@ -54,7 +54,7 @@ li {
     /* background-color: green; */
     width: 100%;
     aspect-ratio: 1;
-    border-radius: 50%;
+    /* border-radius: 50%; */
 }
 
 .orb:nth-child(1) {
