@@ -1,0 +1,144 @@
+:root {
+    --bg-base: black;
+    --bg-change: red;
+}
+* {
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100vh;
+    background-color: aliceblue;
+}
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.canvas {
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    /* background-color: rebeccapurple; */
+    translate: 50% -50%;
+    margin: 0;
+}
+.forground {
+    width: 150px;
+    aspect-ratio: 1/1.5;
+
+    border-radius: 2.5rem;
+
+    background-color: black;
+    /* opacity: 40%; */
+
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    translate: 50% 50%;
+}
+.main {
+    /* background-color: green; */
+    width: 6rem;
+    aspect-ratio: 1;
+    position: relative;
+    z-index: -1;
+}
+.orb {
+    --radius: 200px;
+    --delay: 1s;
+    position: absolute;
+    /* background-color: green; */
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+
+.orb:nth-child(1) {
+    --angle: 45deg;
+    transform: 
+    translate(calc(sin(var(--angle)) * var(--radius)),
+    calc(cos(var(--angle)) * var(--radius)));
+}
+.orb:nth-child(2) {
+    --angle: 90deg;
+    transform: 
+    translate(calc(sin(var(--angle)) * var(--radius)),
+    calc(cos(var(--angle)) * var(--radius)));
+}
+.orb:nth-child(3) {
+    --angle: 135deg;
+    transform: 
+    translate(calc(sin(var(--angle)) * var(--radius)),
+    calc(cos(var(--angle)) * var(--radius)));
+}
+.orb:nth-child(4) {
+    --angle: 180deg;
+    transform: 
+    translate(calc(sin(var(--angle)) * var(--radius)),
+    calc(cos(var(--angle)) * var(--radius)));
+}
+.orb:nth-child(5) {
+    --angle: 225deg;
+    transform: 
+    translate(calc(sin(var(--angle)) * var(--radius)),
+    calc(cos(var(--angle)) * var(--radius)));
+}
+.orb:nth-child(6) {
+    --angle: 270deg;
+    transform: 
+    translate(calc(sin(var(--angle)) * var(--radius)),
+    calc(cos(var(--angle)) * var(--radius)));
+}
+.orb:nth-child(7) {
+    --angle: 315deg;
+    transform: 
+    translate(calc(sin(var(--angle)) * var(--radius)),
+    calc(cos(var(--angle)) * var(--radius)));
+}
+.orb:nth-child(8) {
+    --angle: 360deg;
+    transform: 
+    translate(calc(sin(var(--angle)) * var(--radius)),
+    calc(cos(var(--angle)) * var(--radius)));
+}
+
+/* animation state controlers */
+.main[data-on="true"] {
+    animation: animate 60s linear infinite forwards;
+}
+.main:hover[data-on="true"] {
+    animation-play-state: paused;
+}
+.main[data-on="false"] {
+    animation: animate 60s linear infinite forwards;
+    animation-play-state: paused;
+}
+.orb[data-on="true"]
+{
+    animation: animate 500ms reverse linear forwards, toVisible 1s linear forwards;
+}
+.orb[data-on="false"]{
+    background-color: var(--bg-base);
+    animation: back 500ms linear forwards, toInVisible 500ms linear forwards;
+}
+/* animations */
+@keyframes back {
+    100% {transform: translate(0);}
+}
+@keyframes animate {
+    100% {transform: rotate(360deg); opacity: 100%;}
+}
+@keyframes toInVisible {
+    0% {background-color: var(--bg-base);}
+    100% {background-color: var(--bg-change);}
+}
+@keyframes toVisible {
+    0% {background-color: var(--bg-change);}
+    100% {background-color: var(--bg-base);}
+}
+
+    
